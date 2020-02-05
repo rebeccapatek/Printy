@@ -1,6 +1,5 @@
 import React, { useContext,useRef, useState } from "react"
-// import { EmployeeContext } from "./EmployeeProvider"
-// import { LocationContext } from "../location/LocationProvider"
+
 import { FavoriteContext } from "./FavoriteProvider"
 import { InkContext } from "../inks/InkProvider"
 import {ShirtColorContext} from "../shirtColors/ShirtColorProvider"
@@ -44,7 +43,7 @@ export default props => {
         
         const shirtColorId = parseInt(shirtColorId.current.value)
         const inkId = parseInt(inkId.current.value)
-        // const imageId = parseInt(imageId.current.value)    
+        const imageId = parseInt(imageId.current.value)    
         if (shirtColorId=== 0) {
             window.alert("Please select a shirt color")
         } else {
@@ -52,7 +51,7 @@ export default props => {
                 name: favoriteName.current.value,
                 shirtColorId : shirtColorId,
                 inkId : inkId,
-                imageId : true,
+                imageId : imageId,
                 userId: parseInt(localStorage.getItem("printy_user"))
             })
             //Immediately update the application state with the new array of employees that are in the API
@@ -99,24 +98,6 @@ export default props => {
                 </select>
             </div>
             <div className="form-group">
-                <label htmlFor="inkColor">Assign an ink color</label>
-                <select
-                    defaultValue=""
-                    name="inkColor"
-                    ref={inkId}
-                    id="inkId"
-                    className="form-control"
-                    onChange={handleControlledInputChange}
-                >
-                    <option value="0">Select a Color</option>
-                    {inks.map(e => (
-                        <option key={e.id} value={e.id}>
-                            {e.colorName}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div className="form-group">
                 <label htmlFor="image">Assign an image</label>
                 <select
                     defaultValue=""
@@ -134,6 +115,25 @@ export default props => {
                     ))}
                 </select>
             </div>
+            <div className="form-group">
+                <label htmlFor="inkColor">Assign an ink color</label>
+                <select
+                    defaultValue=""
+                    name="inkColor"
+                    ref={inkId}
+                    id="inkId"
+                    className="form-control"
+                    onChange={handleControlledInputChange}
+                >
+                    <option value="0">Select a Color</option>
+                    {inks.map(e => (
+                        <option key={e.id} value={e.id}>
+                            {e.colorName}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
             <button type="submit"
                     onClick={
                     evt => {
