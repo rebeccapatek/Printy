@@ -13,7 +13,7 @@ export const FavoriteProvider = (props) => {
     const [favorites, setFavorites] = useState([])
 
     const getFavorites = () => {
-        return fetch("http://localhost:8088/favorites") 
+        return fetch("http://localhost:8088/favorites?_expand=user&_expand=image&_expand=ink&_expand=shirtColor") 
            
         
             .then(res => res.json())
