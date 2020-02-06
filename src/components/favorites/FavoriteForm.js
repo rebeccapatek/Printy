@@ -4,6 +4,8 @@ import { FavoriteContext } from "./FavoriteProvider"
 import { InkContext } from "../inks/InkProvider"
 import {ShirtColorContext} from "../shirtColors/ShirtColorProvider"
 import { ImageContext } from "../../images/ImageProvider"
+import { Samy, SvgProxy } from 'react-samy-svg'
+// import svgcontents from 'raw-loader!../../images/Black-T-shirt.svg'
 
 
 export default props => {
@@ -94,7 +96,10 @@ export default props => {
 
     return (
         <>
-        <img src= {require("../../images/Black-T-shirt.svg")} ></img>
+        <Samy path = {require('../../images/Black-T-shirt.svg')}>
+            <SvgProxy selector="#Star" fill={"red"}/>
+        </Samy>
+        
         <h1 className="explainShirt">
             <div>
             your shirt color will be {
