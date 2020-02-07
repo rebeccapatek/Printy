@@ -19,28 +19,11 @@ export default props => {
     const inkChoice = useRef(null)
     const imageChoice = useRef(null)
     const editMode = props.match.params.hasOwnProperty('favoriteId');
-    let chosenShirtColor=""
-    let chosenInkColor=""
-    let chosenImage=""
+    
 
-    useEffect(()=> {
-        chosenShirtColor = shirtColors.find(c => {
-            return c.id === parseInt(favorite.shirtColor)
-        })
-        console.log(chosenShirtColor)
-    })
-    useEffect(()=> {
-        chosenInkColor = inks.find(i => {
-            return i.id === parseInt(favorite.inkColor)
-        })
-        console.log(chosenInkColor)
-    })
-    useEffect(()=> {
-        chosenImage = images.find(img => {
-            return img.id === parseInt(favorite.image)
-        })
-        console.log(chosenImage)
-    })
+    const chosenShirtColor = ((shirtColors.find((c) => c.id === parseInt(favorite.shirtColor)
+    ) || {}).hexcolor)
+    console.log(chosenShirtColor)
 
     const handleControlledInputChange = (event) => {
 		const newShirt = Object.assign({}, favorite);
@@ -97,7 +80,7 @@ export default props => {
     return (
         <>
         <Samy path = {require('../../images/Black-T-shirt.svg')}>
-            <SvgProxy selector="#Star" fill={"red"}/>
+            <SvgProxy selector="#shirt" fill={chosenShirtColor} stroke={"black"}/>
         </Samy>
         
         <h1 className="explainShirt">
