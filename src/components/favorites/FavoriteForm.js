@@ -24,6 +24,16 @@ export default props => {
     const chosenShirtColor = ((shirtColors.find((c) => c.id === parseInt(favorite.shirtColor)
     ) || {}).hexcolor)
     console.log(chosenShirtColor)
+    
+    const chosenImage = ((images.find((img) => {
+        return img.id === parseInt(favorite.image)
+    }) ||  {}).img)
+    console.log(chosenImage)
+
+    const chosenInk = ((inks.find(i => {
+        return i.id === parseInt(favorite.inkColor)
+    }) || {}).hexcolor)
+    console.log(chosenInk)
 
     const handleControlledInputChange = (event) => {
 		const newShirt = Object.assign({}, favorite);
@@ -82,6 +92,9 @@ export default props => {
         <Samy path = {require('../../images/Black-T-shirt.svg')}>
             <SvgProxy selector="#shirt" fill={chosenShirtColor} stroke={"black"}/>
         </Samy>
+        {typeof chosenImage !== 'undefined' ? <Samy path ={require('../../images/Lagunitaslogo.svg')}>
+            <SvgProxy selector="#beer" fill={chosenInk} stroke={"black"}/>
+        </Samy> : ""}
         
         <h1 className="explainShirt">
             <div>

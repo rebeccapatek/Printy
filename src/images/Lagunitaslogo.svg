@@ -5,7 +5,7 @@
  width="700.000000pt" height="325.000000pt" viewBox="0 0 700.000000 325.000000"
  preserveAspectRatio="xMidYMid meet">
 
-<g transform="translate(0.000000,325.000000) scale(0.100000,-0.100000)"
+<g id="beer" transform="translate(0.000000,325.000000) scale(0.050000,-0.050000)"
 fill="#000000" stroke="none">
 <path d="M3135 3158 c-33 -5 -73 -9 -90 -9 -92 3 -127 2 -195 -8 -90 -14 -171
 -36 -220 -61 -43 -22 -77 -81 -114 -198 -24 -76 -26 -99 -26 -235 1 -84 -3
