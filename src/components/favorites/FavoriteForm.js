@@ -19,28 +19,21 @@ export default props => {
     const inkChoice = useRef(null)
     const imageChoice = useRef(null)
     const editMode = props.match.params.hasOwnProperty('favoriteId');
-    let chosenShirtColor=""
-    let chosenInkColor=""
-    let chosenImage=""
+    
 
-    useEffect(()=> {
-        chosenShirtColor = shirtColors.find(c => {
-            return c.id === parseInt(favorite.shirtColor)
-        })
-        console.log(chosenShirtColor)
-    })
-    useEffect(()=> {
-        chosenInkColor = inks.find(i => {
-            return i.id === parseInt(favorite.inkColor)
-        })
-        console.log(chosenInkColor)
-    })
-    useEffect(()=> {
-        chosenImage = images.find(img => {
-            return img.id === parseInt(favorite.image)
-        })
-        console.log(chosenImage)
-    })
+    const chosenShirtColor = ((shirtColors.find((c) => c.id === parseInt(favorite.shirtColorId)
+    ) || {}).hexcolor)
+    console.log(chosenShirtColor)
+    
+    const chosenImage = ((images.find((img) => {
+        return img.id === parseInt(favorite.imageId)
+    }) ||  {}).img)
+    console.log(chosenImage)
+
+    const chosenInk = ((inks.find(i => {
+        return i.id === parseInt(favorite.inkId)
+    }) || {}).hexcolor)
+    console.log(chosenInk)
 
     const handleControlledInputChange = (event) => {
 		const newShirt = Object.assign({}, favorite);
@@ -97,8 +90,11 @@ export default props => {
     return (
         <>
         <Samy path = {require('../../images/Black-T-shirt.svg')}>
-            <SvgProxy selector="#Star" fill={"red"}/>
+            <SvgProxy selector="#shirt" fill={chosenShirtColor} stroke={"black"}/>
         </Samy>
+        {typeof chosenImage !== 'undefined' ? <Samy path ={require(`../../images/${chosenImage}`)}>
+            <SvgProxy selector="#beer" fill={chosenInk} stroke={"black"}/>
+        </Samy> : ""}
         
         <h1 className="explainShirt">
             <div>
@@ -144,11 +140,11 @@ export default props => {
                 <label htmlFor="shirtColor">Assign a shirt color</label>
                 <select
                     
-                    name="shirtColor"
+                    name="shirtColorId"
                     ref={shirtColorChoice}
                     id="shirtColorChoice"
                     className="form-control"
-                    value={favorite.shirtColorId}
+                    value={favorite.shirtColorId }
                     onChange={handleControlledInputChange}
 
                 >
@@ -163,7 +159,7 @@ export default props => {
             <div className="form-group">
                 <label htmlFor="image">Assign an image</label>
                 <select
-                    name="image"
+                    name="imageId"
                     ref={imageChoice }
                     id="imageChoice"
                     className="form-control"
@@ -181,7 +177,7 @@ export default props => {
             <div className="form-group">
                 <label htmlFor="inkColor">Assign an ink color</label>
                 <select
-                    name="inkColor"
+                    name="inkId"
                     ref={inkChoice}
                     id="inkChoice"
                     className="form-control"
