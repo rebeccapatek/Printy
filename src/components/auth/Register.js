@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "./Login.css";
 
 const Register = props => {
-  const userName = useRef();
+  // const userName = useRef();
   const email = useRef();
   const password = useRef();
   const verifyPassword = useRef();
