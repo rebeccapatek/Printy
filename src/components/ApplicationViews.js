@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { UserProvider } from "./auth/UserProvider";
+// import { UserProvider } from "./auth/UserProvider";
 import { InkProvider } from "./inks/InkProvider";
 import { ShirtColorProvider } from "./shirtColors/ShirtColorProvider";
 import { FavoriteProvider } from "./favorites/FavoriteProvider";

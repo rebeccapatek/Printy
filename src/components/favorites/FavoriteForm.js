@@ -1,4 +1,7 @@
 import React, { useContext,useRef, useState, useEffect } from "react"
+// import FileUploader from "react-firebase-file-uploader";
+// import * as firebase from "firebase/app";
+// import "firebase/storage";
 
 import { FavoriteContext } from "./FavoriteProvider"
 import { InkContext } from "../inks/InkProvider"
@@ -6,7 +9,7 @@ import {ShirtColorContext} from "../shirtColors/ShirtColorProvider"
 import { ImageContext } from "../../images/ImageProvider"
 import { Samy, SvgProxy } from 'react-samy-svg'
 // import svgcontents from 'raw-loader!../../images/Black-T-shirt.svg'
-
+import "./FavoriteForm.css"
 
 export default props => {
     const { addFavorite, editFavorite, favorites } = useContext(FavoriteContext)
@@ -19,27 +22,39 @@ export default props => {
     const inkChoice = useRef(null)
     const imageChoice = useRef(null)
     const editMode = props.match.params.hasOwnProperty('favoriteId');
+
+    const [ shirt, setShirt ] = useState({})
+    const [ image, setImage ] = useState({img: 'Heart.svg'})
+    const [ actualImage, setActualImage ] = useState(require(`../../images/Heart.svg`))
+    const [ ink, setInk ] = useState({})
+    const [ compId, setcompId ] = useState(1)
+
+
+    useEffect(()=> {
+        const chosenShirtColor = shirtColors.find((c) => c.id === parseInt(favorite.shirtColorId)
+        ) || {}
+        setShirt(chosenShirtColor)
+        
+        const chosenImage = images.find((img) => img.id === parseInt(favorite.imageId)) || {img: 'Heart.svg'}
+        const loadedFile = require(`../../images/${chosenImage.img}`)
+        setActualImage(loadedFile)
+        setImage(chosenImage)
+    
+        const chosenInk = inks.find(i => i.id === parseInt(favorite.inkId)
+        ) || {}
+        setInk(chosenInk)
+
+        setcompId(Math.random())
+
+    }, [favorite])
     
 
-    const chosenShirtColor = ((shirtColors.find((c) => c.id === parseInt(favorite.shirtColorId)
-    ) || {}).hexcolor)
-    console.log(chosenShirtColor)
-    
-    const chosenImage = ((images.find((img) => {
-        return img.id === parseInt(favorite.imageId)
-    }) ||  {}).img)
-    console.log(chosenImage)
-
-    const chosenInk = ((inks.find(i => {
-        return i.id === parseInt(favorite.inkId)
-    }) || {}).hexcolor)
-    console.log(chosenInk)
 
     const handleControlledInputChange = (event) => {
-		const newShirt = Object.assign({}, favorite);
+    
+        const newShirt = Object.assign({}, favorite);
 		newShirt[event.target.name] = event.target.value;
         setFavorite(newShirt);
-        console.log(favorite)
         
 	};
 
@@ -89,12 +104,12 @@ export default props => {
 
     return (
         <>
-        <Samy path = {require('../../images/Black-T-shirt.svg')}>
-            <SvgProxy selector="#shirt" fill={chosenShirtColor} stroke={"black"}/>
+        <Samy className ="tee" path = {require('../../images/Black-T-shirt.svg')}>
+            <SvgProxy selector="#shirt" fill={shirt.hexcolor} stroke={"black"}/>
         </Samy>
-        {typeof chosenImage !== 'undefined' ? <Samy path ={require(`../../images/${chosenImage}`)}>
-            <SvgProxy selector="#beer" fill={chosenInk} stroke={"black"}/>
-        </Samy> : ""}
+        <Samy key={compId} className ="logo" path={actualImage}>
+            <SvgProxy selector="#beer" fill={ink.hexcolor} stroke={"black"}/>
+        </Samy>
         
         <h1 className="explainShirt">
             <div>
@@ -160,14 +175,16 @@ export default props => {
                 <label htmlFor="image">Assign an image</label>
                 <select
                     name="imageId"
-                    ref={imageChoice }
+                    ref={imageChoice}
                     id="imageChoice"
                     className="form-control"
                     value={favorite.imageId}
                     onChange={handleControlledInputChange}
+                    
                 >
                     <option value="0">Select an Image</option>
                     {images.map(e => (
+                        
                         <option key={e.id} value={e.id}>
                             {e.imgName}
                         </option>
