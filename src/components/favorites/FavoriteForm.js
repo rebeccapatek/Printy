@@ -1,21 +1,20 @@
 import React, { useContext,useRef, useState, useEffect } from "react"
-// import FileUploader from "react-firebase-file-uploader";
-// import * as firebase from "firebase/app";
-// import "firebase/storage";
+import FileUploader from "react-firebase-file-uploader";
+import * as firebase from "firebase/app";
+import "firebase/storage";
 
 import { FavoriteContext } from "./FavoriteProvider"
 import { InkContext } from "../inks/InkProvider"
 import {ShirtColorContext} from "../shirtColors/ShirtColorProvider"
 import { ImageContext } from "../../images/ImageProvider"
 import { Samy, SvgProxy } from 'react-samy-svg'
-// import svgcontents from 'raw-loader!../../images/Black-T-shirt.svg'
 import "./FavoriteForm.css"
 
 export default props => {
     const { addFavorite, editFavorite, favorites } = useContext(FavoriteContext)
     const { inks } = useContext(InkContext)
     const { shirtColors } = useContext(ShirtColorContext)
-    const { images } = useContext(ImageContext)
+    const { addImage, images } = useContext(ImageContext)
     const [ favorite, setFavorite ] = useState({});
     const favoriteName = useRef(null)
     const shirtColorChoice = useRef(null)
@@ -28,6 +27,24 @@ export default props => {
     const [ actualImage, setActualImage ] = useState(require(`../../images/Heart.svg`))
     const [ ink, setInk ] = useState({})
     const [ compId, setcompId ] = useState(1)
+    const [URL, setURL] = useState("");
+
+    const photoUploader = filename => {
+        console.log("filename", filename);
+        firebase
+          .storage()
+          .ref("Logos")
+          .child(filename)
+          .getDownloadURL()
+            .then(firebaseUrl => {
+              setURL(firebaseUrl)
+              addImage({
+                userId: parseInt(localStorage.getItem("printy_user")),
+                photoURL: firebaseUrl,
+                imgName: filename
+              })
+            })
+        }
 
 
     useEffect(()=> {
@@ -190,6 +207,16 @@ export default props => {
                         </option>
                     ))}
                 </select>
+            </div>
+            <div>
+                <label><img src={URL} /></label>
+                    <FileUploader
+                    accept="image/*"
+                    name="photo"
+                    filename={file => file.name.split(".")[0]}
+                    storageRef={firebase.storage().ref("Logos")}
+                    onUploadSuccess={photoUploader}
+                    />
             </div>
             <div className="form-group">
                 <label htmlFor="inkColor">Assign an ink color</label>
