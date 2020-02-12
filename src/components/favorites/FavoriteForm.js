@@ -61,6 +61,7 @@ export default props => {
        
         const loadedFile = chosenImage.local === true ? 
             require(`../../images/${chosenImage.img}`) :
+            //is not available yet so 
             `${chosenImage.img}`
 
 

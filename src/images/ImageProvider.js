@@ -32,6 +32,10 @@ export const ImageProvider = (props) => {
         })
         .then(getImages)
     }
+    const getImage = (URL) => {
+        return fetch(URL)
+        .then()
+    }
 
 
    
