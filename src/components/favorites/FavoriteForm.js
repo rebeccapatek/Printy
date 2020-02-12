@@ -42,7 +42,8 @@ export default props => {
                 userId: parseInt(localStorage.getItem("printy_user")),
                 img: firebaseUrl,
                 imgName: filename,
-                local: false
+                local: false,
+                svgid: "#" + filename.split(".",1)
               })
             })
         }
@@ -154,8 +155,9 @@ export default props => {
                     autoFocus
                     className="form-control"
                     placeholder="Name of this design!"
-                    value={favorite.name}
+                    defaultValue={favorite.name}
                     onChange={handleControlledInputChange}
+                    required autoFocus
                 />
             </div>
             <div className="form-group">
@@ -168,6 +170,7 @@ export default props => {
                     className="form-control"
                     value={favorite.shirtColorId }
                     onChange={handleControlledInputChange}
+                    required
 
                 >
                     <option value="0">Select a Color</option>
@@ -187,7 +190,7 @@ export default props => {
                     className="form-control"
                     value={favorite.imageId}
                     onChange={handleControlledInputChange}
-                    
+                    required
                 >
                     <option value="0">Select an Image</option>
                     {images.map(e => (
@@ -217,6 +220,7 @@ export default props => {
                     className="form-control"
                     value={favorite.inkId}
                     onChange={handleControlledInputChange}
+                    required
                 >
                     <option value="0">Select a Color</option>
                     {inks.map(e => (
@@ -228,14 +232,30 @@ export default props => {
             </div>
 
             <button type="submit"
+
                     onClick={
                     evt => {
-                        evt.preventDefault() // Prevent browser from submitting the form
-                    constructNewFavorite()
-                     }
-                    }
-                     className="btn btn-primary"
-                     >
+                        if (inkChoice.current.value === "0") {
+                            window.alert("Please add an ink color")
+                            evt.preventDefault()
+                        }
+                        else if (imageChoice.current.value === "0") {
+                            window.alert("Please choose an image")
+                            evt.preventDefault()
+                        }
+                        else if (shirtColorChoice.current.value === "0") {
+                            window.alert("Please choose a color for your shirt")
+                            evt.preventDefault()
+                        }
+                        else if (favoriteName.current.value === "") {
+                            window.alert("Please name this favorite deisgn")
+                            evt.preventDefault()
+                        }
+                    else {
+                    evt.preventDefault() 
+                    constructNewFavorite()}
+                    }}
+                     className="btn btn-primary">
                          {editMode ? 'Save Updated Favorite' : 'Make Favorite'}
 			</button>{' '}
         </form>

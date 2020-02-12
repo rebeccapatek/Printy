@@ -37,7 +37,7 @@ const Register = props => {
           .then(createdUser => {
             if (createdUser.hasOwnProperty("id")) {
               localStorage.setItem("printy_user", createdUser.id);
-              props.history.push("/");
+              props.history.push("/favorites/create");
             }
           });
       });
