@@ -23,7 +23,7 @@ export default props => {
     const editMode = props.match.params.hasOwnProperty('favoriteId');
 
     const [ shirt, setShirt ] = useState({})
-    const [ image, setImage ] = useState({img: 'Heart.svg'})
+    const [ image, setImage ] = useState({img: 'Heart.svg', local: true})
     const [ actualImage, setActualImage ] = useState(require(`../../images/Heart.svg`))
     const [ ink, setInk ] = useState({})
     const [ compId, setcompId ] = useState(1)
@@ -40,8 +40,9 @@ export default props => {
               setURL(firebaseUrl)
               addImage({
                 userId: parseInt(localStorage.getItem("printy_user")),
-                photoURL: firebaseUrl,
-                imgName: filename
+                img: firebaseUrl,
+                imgName: filename,
+                local: false
               })
             })
         }
@@ -52,8 +53,18 @@ export default props => {
         ) || {}
         setShirt(chosenShirtColor)
         
-        const chosenImage = images.find((img) => img.id === parseInt(favorite.imageId)) || {img: 'Heart.svg'}
-        const loadedFile = require(`../../images/${chosenImage.img}`)
+        const chosenImage = images.find((img) => img.id === parseInt(favorite.imageId)) || {img: 'Heart.svg', local: true}
+        // const loadedFile = require(`../../images/${chosenImage.img}`)
+        
+
+
+       
+        const loadedFile = chosenImage.local === true ? 
+            require(`../../images/${chosenImage.img}`) :
+            `${chosenImage.img}`
+
+
+        
         setActualImage(loadedFile)
         setImage(chosenImage)
     
@@ -128,29 +139,7 @@ export default props => {
             <SvgProxy selector="#beer" fill={ink.hexcolor} stroke={"black"}/>
         </Samy>
         
-        <h1 className="explainShirt">
-            <div>
-            your shirt color will be {
-            (shirtColors.find(c => {
-                return c.id === parseInt(favorite.shirtColor)
-            }) || {}).colorName
-            }
-            </div>
-            <div>
-            your ink color will be {
-            (inks.find(i => {
-                return i.id === parseInt(favorite.inkColor)
-            }) || {}).colorName
-            }
-            </div>
-            <div>
-            your image will be {
-            (images.find(img => {
-                return img.id === parseInt(favorite.image)
-            }) ||  {}).imgName
-            }
-            </div>
-        </h1>
+
         <form className="favoriteForm">
             <h2 className="favoriteForm__title">New Shirt</h2>
             <div className="form-group">
