@@ -8,6 +8,7 @@ export default (props) => {
 
 	const { favorites } = useContext(FavoriteContext);
 	const favoritesOfActiveUser = favorites.filter(f => f.userId === parseInt(localStorage.getItem("printy_user"), 10))
+	
 	return (
 <>
 
@@ -21,6 +22,7 @@ export default (props) => {
     return <Favorite {...props} key={favorite.id} favorite={favorite}  />
 })}
 		</div>
+		
 		</>
 	);
 };

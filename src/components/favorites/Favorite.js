@@ -1,10 +1,18 @@
 import React, { useContext } from "react"
+import { Samy, SvgProxy } from 'react-samy-svg'
 
 import { FavoriteContext } from "./FavoriteProvider";
-
+import "./Favorite.css"
 export default ({ favorite, history }) => {
   const { deleteFavorite } = useContext(FavoriteContext)
-   
+  
+
+
+ 
+  const loadedFile = favorite.image.local === true ? 
+      require(`../../images/${favorite.image.img}`) :
+      `${favorite.image.img}`
+
 
 
   return (
@@ -13,6 +21,16 @@ export default ({ favorite, history }) => {
       <div>Shirt Color: {favorite.shirtColor.colorName}</div>
       <div>Ink Color: {favorite.ink.colorName} </div>
       <div>Image: {favorite.image.imgName} </div>
+      
+      <div className="fav">
+      <Samy className ="tee" path = {require('../../images/Black-T-shirt.svg')}>
+            <SvgProxy selector="#shirt" fill={favorite.shirtColor.hexcolor} stroke={"black"}/>
+      </Samy>
+      <Samy className ={'logo__'+favorite.image.id} id="logo" path={loadedFile}>
+            <SvgProxy selector="#beer" fill={favorite.ink.hexcolor} stroke={"black"}/>
+      </Samy>
+      </div>
+
       
       
       <button className="btn--edit" onClick={() => {

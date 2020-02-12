@@ -1,0 +1,13 @@
+svg[class*="logo__"] {
+    
+    position: absolute;
+    left: 190px;
+    align-content: center;
+    
+
+}
+div.fav{
+    min-width: 400px;
+    overflow: hidden;
+    display:inline-block;
+}
