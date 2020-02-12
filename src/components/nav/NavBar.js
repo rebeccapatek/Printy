@@ -6,7 +6,7 @@ export default (props) => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                <Link className="navbar__link" to="/home">Make a New Shirt</Link>
+                <Link className="navbar__link" to="/favorites/create">Make a New Shirt</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/favorites">Favorites</Link>
@@ -27,7 +27,7 @@ export default (props) => {
                 onClick={e => {
                     e.preventDefault()
                     localStorage.removeItem("printy_user")
-                    props.history.push("/")
+                    props.history.push("/login")
                 }}
                 >Log off</Link>
             </li>

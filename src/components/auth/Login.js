@@ -25,7 +25,7 @@ const Login = props => {
             .then(exists => {
                 if (exists && exists.userPassword === password.current.value) {
                     localStorage.setItem("printy_user", exists.id)
-                    props.history.push("/")
+                    props.history.push("/favorites/create")
                 } else if (exists && exists.userPassword !== password.current.value) {
                     window.alert("Password does not match")
                   } else if (!exists) {
