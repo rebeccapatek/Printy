@@ -6,7 +6,7 @@ import "./Login.css"
 const Login = props => {
     const email = useRef()
     const password = useRef()
-
+//the useRef is a hook that sets the initial value of theses keys to null, then changes it to the correct value?
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?userEmail=${email.current.value}`)
             .then(_ => _.json())
@@ -17,10 +17,10 @@ const Login = props => {
                 return false
             })
     }
-
+//keeps the page from auto submitting the form without clicking submit
     const handleLogin = (e) => {
         e.preventDefault()
-
+//if user and password are correct, send to create a tshirt and store printy user in localStorage. if not display corresponding message
         existingUserCheck()
             .then(exists => {
                 if (exists && exists.userPassword === password.current.value) {
@@ -34,7 +34,7 @@ const Login = props => {
                 }
             })
     }
-
+//This returns the form for login
     return (
         <main className="container--login">
             <section>

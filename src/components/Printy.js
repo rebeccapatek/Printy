@@ -6,7 +6,7 @@ import Login from "./auth/Login"
 import Register from "./auth/Register"
 import ApplicationViews from "./ApplicationViews"
 
-
+ // If you have a printy user stored then take to navbar and application views otherwise redirect to login
 export default () => (
     <>
         <Route render={() => {
