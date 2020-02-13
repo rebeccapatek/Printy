@@ -2,11 +2,11 @@ import React, { useRef } from "react";
 import "./Login.css";
 
 const Register = props => {
-  // const userName = useRef();
   const email = useRef();
   const password = useRef();
   const verifyPassword = useRef();
 
+//check to see if someone who is trying to register is already an existing user
   const existingUserCheck = () => {
     return fetch(`http://localhost:8088/users?userEmail=${email.current.value}`)
       .then(_ => _.json())
@@ -17,9 +17,11 @@ const Register = props => {
         return false;
       });
   };
+  //prevents form from auto-submitting upon page load
 
   const handleRegister = e => {
     e.preventDefault();
+//check to make sure the two passwords matching than create a new user in the database.
 
     if (password.current.value === verifyPassword.current.value) {
       existingUserCheck().then(() => {
@@ -45,7 +47,7 @@ const Register = props => {
       window.alert("Passwords do not match");
     }
   };
-
+//form to register a new user
   return (
     <main style={{ textAlign: "center" }}>
       <form className="form--login" onSubmit={handleRegister}>

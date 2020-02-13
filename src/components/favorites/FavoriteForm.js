@@ -2,7 +2,6 @@ import React, { useContext,useRef, useState, useEffect } from "react"
 import FileUploader from "react-firebase-file-uploader";
 import * as firebase from "firebase/app";
 import "firebase/storage";
-
 import { FavoriteContext } from "./FavoriteProvider"
 import { InkContext } from "../inks/InkProvider"
 import {ShirtColorContext} from "../shirtColors/ShirtColorProvider"
@@ -23,12 +22,15 @@ export default props => {
     const editMode = props.match.params.hasOwnProperty('favoriteId');
 
     const [ shirt, setShirt ] = useState({})
+    //sets initial image to heart so that it is not undefinied
     const [ image, setImage ] = useState({img: 'Heart.svg', local: true})
     const [ actualImage, setActualImage ] = useState(require(`../../images/Heart.svg`))
     const [ ink, setInk ] = useState({})
+    //this sets a key for the logo image so that is recreates a new key with random math each time the form is altered
     const [ compId, setcompId ] = useState(1)
+//this is setting the URL for the firebase image
     const [URL, setURL] = useState("");
-
+//this is the function that is uploading new logos from firebase and adding an image to the json database
     const photoUploader = filename => {
         console.log("filename", filename);
         firebase
@@ -50,6 +52,7 @@ export default props => {
 
 
     useEffect(()=> {
+//this is finding the shirt color that was selected in the drop down and then creating a const to set change the shirt colo to selected color in the SVG element        
         const chosenShirtColor = shirtColors.find((c) => c.id === parseInt(favorite.shirtColorId)
         ) || {}
         setShirt(chosenShirtColor)
@@ -59,7 +62,7 @@ export default props => {
         
 
 
-       
+ //decides if it is a local or firebase file and then creates an path according to use in SVG element      
         const loadedFile = chosenImage.local === true ? 
             require(`../../images/${chosenImage.img}`) :
             //is not available yet so 
@@ -73,7 +76,7 @@ export default props => {
         const chosenInk = inks.find(i => i.id === parseInt(favorite.inkId)
         ) || {}
         setInk(chosenInk)
-
+//sets the key of the image to math.random so that the logo is recreated everytime input is changed on form
         setcompId(Math.random())
 
     }, [favorite])
@@ -81,13 +84,13 @@ export default props => {
 
 
     const handleControlledInputChange = (event) => {
-    
+ //anytime there is a change to the favorite change the state on the dom   
         const newShirt = Object.assign({}, favorite);
 		newShirt[event.target.name] = event.target.value;
         setFavorite(newShirt);
         
 	};
-
+//if it is edit mode set favorite on form to the the favorite that was selected from the favorite list
 	const setDefaults = () => {
 		if (editMode) {
 			const favoriteId = parseInt(props.match.params.favoriteId);
@@ -126,11 +129,12 @@ export default props => {
                 imageId : imageId,
                 userId: parseInt(localStorage.getItem("printy_user"))
             })
-            //Immediately update the application state with the new array of employees that are in the API
+            //after you have created or edited a faovrite then send the user to the list of favorites
             .then(() => props.history.push("/favorites"))
         }
     }
 
+//The Samy elements was a plugin I downloaded to be able to dynamically change the elements of the SVG files like color.  I did need to embed the id=beer into any svg file I wanted to use for it to work.
 
     return (
         <>
