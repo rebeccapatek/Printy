@@ -152,7 +152,7 @@ export default props => {
         
 
         <form className="favoriteForm">
-            <h2 className="favoriteForm__title">New Shirt</h2>
+
             <div className="form-group">
                 <label htmlFor="favoriteName">Name this Design</label>
                 <input
@@ -191,6 +191,25 @@ export default props => {
                 </select>
             </div>
             <div className="form-group">
+                <label htmlFor="inkColor">Assign an ink color</label>
+                <select
+                    name="inkId"
+                    ref={inkChoice}
+                    id="inkChoice"
+                    className="form-control"
+                    value={favorite.inkId}
+                    onChange={handleControlledInputChange}
+                    required
+                >
+                    <option value="0">Select a Color</option>
+                    {inks.map(e => (
+                        <option key={e.id} value={e.id}>
+                            {e.colorName}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="form-group">
                 <label htmlFor="image">Assign an image</label>
                 <select
                     name="imageId"
@@ -219,25 +238,6 @@ export default props => {
                     storageRef={firebase.storage().ref("Logos")}
                     onUploadSuccess={photoUploader}
                     />
-            </div>
-            <div className="form-group">
-                <label htmlFor="inkColor">Assign an ink color</label>
-                <select
-                    name="inkId"
-                    ref={inkChoice}
-                    id="inkChoice"
-                    className="form-control"
-                    value={favorite.inkId}
-                    onChange={handleControlledInputChange}
-                    required
-                >
-                    <option value="0">Select a Color</option>
-                    {inks.map(e => (
-                        <option key={e.id} value={e.id}>
-                            {e.colorName}
-                        </option>
-                    ))}
-                </select>
             </div>
 
             <button type="submit"

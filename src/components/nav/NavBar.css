@@ -2,10 +2,24 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    font-size: 18pt;
+    font-family: Verdana, Tahoma, sans-serif;
+    width: 100%;
+    
+    
+    
 
 }
 
 .navbar__item {
-    flex-basis: 20%;
+    /* flex-basis: 20%; */
     list-style-type: none;
+    background-color: #333;
+    padding: 8px;
+    
+}
+
+a.navbar__link {
+    color: rgb(255, 255, 255);
+    font-style: normal;
 }
