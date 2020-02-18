@@ -1,13 +1,18 @@
-.tee {
-    margin:0;
+/* .tee {
 
-}
+    
+    
+
+} */
 .logo {
-    margin: 0;
+
     position: absolute;
     top: 0px;
     left: 190px;
     align-content: center;
+    /* width: 10rem;
+    height: 10rem; */
     
 
 }
+

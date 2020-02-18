@@ -6,7 +6,7 @@ export default (props) => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                <Link className="navbar__link" to="/favorites/create">Make a New Shirt</Link>
+                <Link className="navbar__link" to="/">Make a New Shirt</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/favorites">Favorites</Link>
@@ -18,7 +18,7 @@ export default (props) => {
                 <Link className="navbar__link" to="/orders">Orders</Link>
             </li>
             
-//checks to see if printy user in in local storage if so have link that will say logout and will remove printyuser from local storage and push you to the logout screen.
+
                 {
             localStorage.getItem("printy_user")
             ? <li className="navbar__item">
@@ -35,4 +35,6 @@ export default (props) => {
             }
         </ul>
     )
+
 }
+//checks to see if printy user in in local storage if so have link that will say logout and will remove printyuser from local storage and push you to the logout screen.

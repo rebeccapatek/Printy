@@ -2,21 +2,21 @@ import React, { useContext } from "react"
 import { Samy, SvgProxy } from 'react-samy-svg'
 import { FavoriteContext } from "./FavoriteProvider";
 import "./Favorite.css"
+//this checks to see if the image is local to the app or hosted on firebase and provides a different path for the image source depending on which 
 
 //This is the function that that deletes a favorite when you click the button 
+//This is the component that describes and displays each favorite
+//Had to create a unique classname name for each image because otherwise it was stacking all of the images on the first shirt
 export default ({ favorite, history }) => {
   const { deleteFavorite } = useContext(FavoriteContext)
   
 
 
-//this checks to see if the image is local to the app or hosted on firebase and provides a different path for the image source depending on which 
   const loadedFile = favorite.image.local === true ? 
       require(`../../images/${favorite.image.img}`) :
       `${favorite.image.img}`
 
 
-//This is the component that describes and displays each favorite
-//Had to create a unique classname name for each image because otherwise it was stacking all of the images on the first shirt
   return (
     <section className="FavoriteCard">
       <div>Name: {favorite.name} </div>
@@ -37,14 +37,17 @@ export default ({ favorite, history }) => {
       <button className="btn--edit" onClick={() => {
           history.push(`/favorites/editFavorites/${favorite.id}`)
         }}>edit</button>
-        <button className="btn--delete"
+      <button className="btn--delete"
 
           onClick={() => {
             // Code to delete animal from database
             deleteFavorite(favorite).then(() => {
               history.push("/favorites");
             });
-          }}>delete</button>
+      }}>delete</button>
+      <button className="btn--cart" onClick={()=> {
+        history.push(`/shoppingcart/${favorite.id}`)
+      }}>Add to Cart</button>
     </section>
   );
 };

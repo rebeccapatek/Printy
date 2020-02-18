@@ -138,12 +138,17 @@ export default props => {
 
     return (
         <>
+        <div className="spacer">
+            
+        </div>
+        <div className="fun">
         <Samy className ="tee" path = {require('../../images/Black-T-shirt.svg')}>
             <SvgProxy selector="#shirt" fill={shirt.hexcolor} stroke={"black"}/>
         </Samy>
         <Samy key={compId} className ="logo" path={actualImage}>
             <SvgProxy selector="#beer" fill={ink.hexcolor} stroke={"black"}/>
         </Samy>
+        </div>
         
 
         <form className="favoriteForm">
