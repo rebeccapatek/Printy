@@ -138,9 +138,9 @@ export default props => {
 
     return (
         <>
-        <div className="spacer">
+        <div className="make">
             
-        </div>
+        
         <div className="fun">
         <Samy className ="tee" path = {require('../../images/Black-T-shirt.svg')}>
             <SvgProxy selector="#shirt" fill={shirt.hexcolor} stroke={"black"}/>
@@ -268,6 +268,7 @@ export default props => {
                          {editMode ? 'Save Updated Favorite' : 'Make Favorite'}
 			</button>{' '}
         </form>
+        </div>
     </>
     )
 }

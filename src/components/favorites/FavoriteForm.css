@@ -1,18 +1,19 @@
-/* .tee {
-
+.make {
+    background-color: lightgoldenrodyellow;
     
-    
-
-} */
-.logo {
-
-    position: absolute;
-    top: 0px;
-    left: 190px;
-    align-content: center;
-    /* width: 10rem;
-    height: 10rem; */
     
 
 }
+.logo {
+
+    position: absolute;
+    top: 100px;
+    left: 190px;
+    align-content: center;
+    }
+
+    body {
+    background-color: lightgoldenrodyellow;
+}
+
 

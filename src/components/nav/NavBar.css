@@ -5,6 +5,7 @@
     font-size: 18pt;
     font-family: Verdana, Tahoma, sans-serif;
     width: 100%;
+    background-color: #333;
     
     
     
@@ -15,8 +16,14 @@
     /* flex-basis: 20%; */
     list-style-type: none;
     background-color: #333;
-    padding: 8px;
+    padding: 15px;
     
+}
+a.app {
+    color:white;
+    border: 2px solid white;
+    padding: 5px;
+
 }
 
 a.navbar__link {
