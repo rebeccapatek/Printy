@@ -138,16 +138,21 @@ export default props => {
 
     return (
         <>
+        <div className="make">
+            
+        
+        <div className="fun">
         <Samy className ="tee" path = {require('../../images/Black-T-shirt.svg')}>
             <SvgProxy selector="#shirt" fill={shirt.hexcolor} stroke={"black"}/>
         </Samy>
         <Samy key={compId} className ="logo" path={actualImage}>
             <SvgProxy selector="#beer" fill={ink.hexcolor} stroke={"black"}/>
         </Samy>
+        </div>
         
 
         <form className="favoriteForm">
-            <h2 className="favoriteForm__title">New Shirt</h2>
+
             <div className="form-group">
                 <label htmlFor="favoriteName">Name this Design</label>
                 <input
@@ -165,7 +170,7 @@ export default props => {
                 />
             </div>
             <div className="form-group">
-                <label htmlFor="shirtColor">Assign a shirt color</label>
+                <label htmlFor="shirtColor">Pick a shirt color</label>
                 <select
                     
                     name="shirtColorId"
@@ -186,7 +191,26 @@ export default props => {
                 </select>
             </div>
             <div className="form-group">
-                <label htmlFor="image">Assign an image</label>
+                <label htmlFor="inkColor">Pick an ink color</label>
+                <select
+                    name="inkId"
+                    ref={inkChoice}
+                    id="inkChoice"
+                    className="form-control"
+                    value={favorite.inkId}
+                    onChange={handleControlledInputChange}
+                    required
+                >
+                    <option value="0">Select a Color</option>
+                    {inks.map(e => (
+                        <option key={e.id} value={e.id}>
+                            {e.colorName}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="form-group">
+                <label htmlFor="image">Pick an image</label>
                 <select
                     name="imageId"
                     ref={imageChoice}
@@ -214,25 +238,6 @@ export default props => {
                     storageRef={firebase.storage().ref("Logos")}
                     onUploadSuccess={photoUploader}
                     />
-            </div>
-            <div className="form-group">
-                <label htmlFor="inkColor">Assign an ink color</label>
-                <select
-                    name="inkId"
-                    ref={inkChoice}
-                    id="inkChoice"
-                    className="form-control"
-                    value={favorite.inkId}
-                    onChange={handleControlledInputChange}
-                    required
-                >
-                    <option value="0">Select a Color</option>
-                    {inks.map(e => (
-                        <option key={e.id} value={e.id}>
-                            {e.colorName}
-                        </option>
-                    ))}
-                </select>
             </div>
 
             <button type="submit"
@@ -263,6 +268,7 @@ export default props => {
                          {editMode ? 'Save Updated Favorite' : 'Make Favorite'}
 			</button>{' '}
         </form>
+        </div>
     </>
     )
 }

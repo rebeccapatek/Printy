@@ -1,13 +1,27 @@
-.tee {
-    margin:0;
+.make {
+    background-color: lightgoldenrodyellow;
+    
+    
 
 }
 .logo {
-    margin: 0;
+
     position: absolute;
-    top: 0px;
+    top: 100px;
     left: 190px;
     align-content: center;
-    
+    }
 
+    body {
+    background-color: lightgoldenrodyellow;
+}
+
+
+form.favoriteForm {
+    justify-content: center;
+    padding-left: 170px;
+    position: absolute
+}
+div.form-group {
+    justify-content: center;
 }

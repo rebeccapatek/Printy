@@ -20,18 +20,17 @@ export default props => {
             <FavoriteProvider>
               <ImageProvider>
               <Route
-            exact
-            path="/favorites"
-            render={props => <FavoriteList {...props} />}
-          />
-          <Route
-            path="/favorites/create"
-            render={props => <FavoriteForm {...props} />}
-          />
-          <Route
-            path="/favorites/editFavorites/:favoriteId(\d+)"
-            render={props => <FavoriteForm {...props} />}
-          />
+                exact path="/favorites"
+                render={props => <FavoriteList {...props} />}
+              />
+              <Route
+              exact path="/"
+              render={props => <FavoriteForm {...props} />}
+              />
+              <Route
+              exact path="/favorites/editFavorites/:favoriteId(\d+)"
+              render={props => <FavoriteForm {...props} />}
+              />
           </ImageProvider>
           </FavoriteProvider>
 
