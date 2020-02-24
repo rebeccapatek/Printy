@@ -19,10 +19,30 @@ export default ({ favorite, history }) => {
 
   return (
     <section className="FavoriteCard">
-      <div>Name: {favorite.name} </div>
+      <div id="writing">
+      <div id="name">{favorite.name} </div>
       <div>Shirt Color: {favorite.shirtColor.colorName}</div>
       <div>Ink Color: {favorite.ink.colorName} </div>
       <div>Image: {favorite.image.imgName} </div>
+      <div className="button-section">
+     
+      
+     <button className="btn--edit" onClick={() => {
+         history.push(`/favorites/editFavorites/${favorite.id}`)
+       }}>edit</button>
+     <button className="btn--delete"
+
+         onClick={() => {
+           // Code to delete animal from database
+           deleteFavorite(favorite).then(() => {
+             history.push("/favorites");
+           });
+     }}>delete</button>
+     <button className="btn--cart" onClick={()=> {
+       history.push(`/shoppingcart/${favorite.id}`)
+     }}>Add to Cart</button>
+     </div>
+     </div>
       
       <div className="fav">
       <Samy className ="tee" path = {require('../../images/Black-T-shirt.svg')}>
@@ -32,22 +52,8 @@ export default ({ favorite, history }) => {
             <SvgProxy selector="#beer" fill={favorite.ink.hexcolor} stroke={"black"}/>
       </Samy>
       </div>
-     
-      
-      <button className="btn--edit" onClick={() => {
-          history.push(`/favorites/editFavorites/${favorite.id}`)
-        }}>edit</button>
-      <button className="btn--delete"
+      <a className="spacer"></a>
 
-          onClick={() => {
-            // Code to delete animal from database
-            deleteFavorite(favorite).then(() => {
-              history.push("/favorites");
-            });
-      }}>delete</button>
-      <button className="btn--cart" onClick={()=> {
-        history.push(`/shoppingcart/${favorite.id}`)
-      }}>Add to Cart</button>
     </section>
   );
 };

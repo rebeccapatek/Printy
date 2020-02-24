@@ -17,3 +17,11 @@
 }
 
 
+form.favoriteForm {
+    justify-content: center;
+    padding-left: 170px;
+    position: absolute
+}
+div.form-group {
+    justify-content: center;
+}

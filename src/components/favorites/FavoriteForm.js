@@ -170,7 +170,7 @@ export default props => {
                 />
             </div>
             <div className="form-group">
-                <label htmlFor="shirtColor">Assign a shirt color</label>
+                <label htmlFor="shirtColor">Pick a shirt color</label>
                 <select
                     
                     name="shirtColorId"
@@ -191,7 +191,7 @@ export default props => {
                 </select>
             </div>
             <div className="form-group">
-                <label htmlFor="inkColor">Assign an ink color</label>
+                <label htmlFor="inkColor">Pick an ink color</label>
                 <select
                     name="inkId"
                     ref={inkChoice}
@@ -210,7 +210,7 @@ export default props => {
                 </select>
             </div>
             <div className="form-group">
-                <label htmlFor="image">Assign an image</label>
+                <label htmlFor="image">Pick an image</label>
                 <select
                     name="imageId"
                     ref={imageChoice}

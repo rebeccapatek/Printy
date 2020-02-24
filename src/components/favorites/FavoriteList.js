@@ -11,7 +11,7 @@ export default (props) => {
 	return (
 <>
 
-		<h1>Favorites</h1>
+		<h1>Favorite Shirts</h1>
 
 		<div className="favorites">
 			
