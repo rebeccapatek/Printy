@@ -29,7 +29,7 @@ export default ({ favorite, history }) => {
       
      <button className="btn--edit" onClick={() => {
          history.push(`/favorites/editFavorites/${favorite.id}`)
-       }}>edit</button>
+       }}>Edit</button>
      <button className="btn--delete"
 
          onClick={() => {
@@ -37,7 +37,7 @@ export default ({ favorite, history }) => {
            deleteFavorite(favorite).then(() => {
              history.push("/favorites");
            });
-     }}>delete</button>
+     }}>Delete</button>
      <button className="btn--cart" onClick={()=> {
        history.push(`/shoppingcart/${favorite.id}`)
      }}>Add to Cart</button>

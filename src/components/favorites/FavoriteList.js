@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FavoriteContext } from './FavoriteProvider';
 import Favorite from './Favorite';
+import "./FavoriteList.css"
 
 
 export default (props) => {
@@ -11,7 +12,7 @@ export default (props) => {
 	return (
 <>
 
-		<h1>Favorite Shirts</h1>
+		<h1 className="header">Favorite Shirts</h1>
 
 		<div className="favorites">
 			

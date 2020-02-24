@@ -114,7 +114,7 @@ export default props => {
         const imageId = parseInt(imageChoice.current.value)    
         if (editMode) {
 			editFavorite({
-                name: favorite.name,
+                name: favoriteName.current.value,
 				id: favorite.id,
 				userId: parseInt(localStorage.getItem("printy_user")),
                 shirtColorId : shirtColorId,
