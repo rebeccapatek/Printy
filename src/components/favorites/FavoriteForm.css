@@ -1,9 +1,19 @@
+@font-face {
+    font-family: 'Knewave';
+    src: url('https://fonts.googleapis.com/css?family=Knewave&display=swap')
+}
 .make {
     background-color: lightgoldenrodyellow;
-    
-    
-
 }
+    
+.topwords {
+    font-family: 'Knewave';
+    font-size: 26px;
+    color: #333;
+    margin-left: 15px;
+}    
+
+
 .logo {
 
     position: absolute;
@@ -21,7 +31,8 @@
 form.favoriteForm {
     justify-content: center;
     padding-left: 170px;
-    position: absolute
+    position: absolute;
+    text-align:center;
 }
 div.form-group {
     justify-content: center;

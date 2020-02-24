@@ -1,7 +1,7 @@
 svg[class*="logo__"] {
     
     position: absolute;
-    left: 200px;
+    left: 210px;
     align-content: center;
     opacity: 0.85;
     
@@ -18,7 +18,7 @@ svg[class*="logo__"] {
 section.FavoriteCard {
     border: 2px solid black;
     border-radius: 10%;
-    margin-right:300px;
+    margin-right:340px;
     margin-left: 10px;
     margin-bottom:10px;
 }
@@ -27,7 +27,7 @@ section.FavoriteCard {
     
     justify-content: center;
     text-align: center;
-    padding-right: 80px;
+    padding-right: 15px;
 }
 
 div.fav{
