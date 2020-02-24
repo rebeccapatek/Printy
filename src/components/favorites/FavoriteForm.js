@@ -139,6 +139,9 @@ export default props => {
     return (
         <>
         <div className="make">
+        <div className="topwords">
+        <link href="https://fonts.googleapis.com/css?family=Knewave&display=swap" rel="stylesheet"></link>
+            Let's make a shirt!</div>
             
         
         <div className="fun">
