@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+# Printy
 
-### `npm start`
+Printy is a React web app with full CRUD functionality that allows users to assign colors to a t-shirt, assign colors to a inked design on a t-shirt, and upload their own design to put on a t-shirt. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Database sample
+Create a json file named database.json with the provided sample data and run a json server watching database.json on port 8088
 
-### `npm test`
+```JSON
+{
+  "users": [],
+  "pets": [],
+  "chores": [
+    {
+      "id": 1,
+      "name": "Take pet for walk"
+    },
+    {
+      "id": 2,
+      "name": "Feed pet"
+    },
+    {
+      "id": 3,
+      "name": "Clean cage"
+    },
+    {
+      "id": 4,
+      "name": "Brush pet"
+    },
+    {
+      "id": 5,
+      "name": "Clean tank"
+    },
+    {
+      "id": 6,
+      "name": "Play with pet"
+    },
+    {
+      "id": 7,
+      "name": "Clean box"
+    },
+    {
+      "name": "Give treat",
+      "id": 12
+    }
+  ],
+"kidPetChores": []
+}
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `npm run build`
+## Installation
+In your terminal run git clone SSH KEY HERE
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd into the project directory
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+From the main directory, run npm install to install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm start
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Usage
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Click on "Make a shirt" button 
+2. Register a new user
+3. Navigate to the shirt color dropdown to choose a shirt color
+4. Navigate to the ink color dropdown to choose an ink color
+5. Navigate to the design dropdown to choose a design or Hit upload to upload your own SVG file off of your own computer.  You must ad the id="beer" to the SVG file to make it respond to the color changes in ink.
+5. Click "Add favorite" button once you have a shirt that you like.
+6. Click on favorites in the navbar and you can see a list of potential shirt designs and colors that you might like to order.
+7. Click the edit or delete button if you'd like to change one of your favorites
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
