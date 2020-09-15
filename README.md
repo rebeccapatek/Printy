@@ -11,42 +11,104 @@ Create a json file named database.json with the provided sample data and run a j
 ```JSON
 {
   "users": [],
-  "pets": [],
-  "chores": [
-    {
-      "id": 1,
-      "name": "Take pet for walk"
-    },
-    {
-      "id": 2,
-      "name": "Feed pet"
-    },
-    {
-      "id": 3,
-      "name": "Clean cage"
-    },
-    {
-      "id": 4,
-      "name": "Brush pet"
-    },
-    {
-      "id": 5,
-      "name": "Clean tank"
-    },
-    {
-      "id": 6,
-      "name": "Play with pet"
-    },
-    {
-      "id": 7,
-      "name": "Clean box"
-    },
-    {
-      "name": "Give treat",
-      "id": 12
-    }
-  ],
-"kidPetChores": []
+  "shirtColors": 
+  [
+  {
+    "colorName": "black",
+    "hexcolor": "#000000",
+    "id": 1
+  },
+  {
+    "colorName": "white",
+    "hexcolor": "#ffffff",
+    "id": 2
+  },
+  {
+    "colorName": "navy",
+    "hexcolor": "#000080",
+    "id": 3
+  },
+  {
+    "colorName": "grey",
+    "hexcolor": "#D3D3D3",
+    "id": 4
+  }
+],
+  "inks":[
+  {
+    "colorName": "black",
+    "hexcolor": "#000000",
+    "id": 1
+  },
+  {
+    "colorName": "white",
+    "hexcolor": "#ffffff",
+    "id": 2
+  },
+  {
+    "colorName": "navy",
+    "hexcolor": "#000080",
+    "id": 3
+  },
+  {
+    "colorName": "goldenrod",
+    "hexcolor": "#daa520",
+    "id": 4
+  }
+] 
+,
+"images": 
+[
+  {
+    "img": "Lagunitaslogo.svg",
+    "id": 1,
+    "imgName": "Lagunitas",
+    "svgid": "#beer",
+    "userId": 2,
+    "local": true
+  },
+  {
+    "img": "Heart.svg",
+    "id": 2,
+    "svgid": "#heart",
+    "imgName": "Heart",
+    "userId": 2,
+    "local": true
+  },
+  {
+    "userId": 3,
+    "img": "https://firebasestorage.googleapis.com/v0/b/printy-cd05c.appspot.com/o/Logos%2Fresult.svg?alt=media&token=342b125e-4c22-4c7e-8687-82cb1f2994d8",
+    "imgName": "result.svg",
+    "svgid": "#result",
+    "local": false,
+    "id": 3
+  },
+  {
+    "userId": 3,
+    "img": "https://firebasestorage.googleapis.com/v0/b/printy-cd05c.appspot.com/o/Logos%2FBecca-Banjo-Fiddle-12-x-12.svg?alt=media&token=6a163a03-ce67-4ee8-9e75-d93b93529194",
+    "imgName": "Becca-Banjo-Fiddle-12-x-12.svg",
+    "local": false,
+    "svgid": "#Becca-Banjo-Fiddle-12-x-12",
+    "id": 4
+  },
+  {
+    "userId": 3,
+    "img": "https://firebasestorage.googleapis.com/v0/b/printy-cd05c.appspot.com/o/Logos%2Fwolf.svg?alt=media&token=e0d3cb0d-5c4b-4342-8d2b-06a5600d14ce",
+    "imgName": "wolf.svg",
+    "local": false,
+    "svgid": "#wolf",
+    "id": 5
+  },
+  {
+    "userId": 3,
+    "img": "https://firebasestorage.googleapis.com/v0/b/printy-cd05c.appspot.com/o/Logos%2F70sboombox.svg?alt=media&token=8063cec3-04f5-4539-82e9-df31f3e41a3f",
+    "imgName": "70sboombox.svg",
+    "local": false,
+    "svgid": "#70sboombox",
+    "id": 6
+  }
+],
+"favorites": [],
 }
 
 ```
